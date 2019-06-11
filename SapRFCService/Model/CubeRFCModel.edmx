@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CubeRFCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Price">
+          <Key>
+            <PropertyRef Name="PriceID" />
+          </Key>
+          <Property Name="PriceID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MATNR" Type="varchar" MaxLength="30" />
+          <Property Name="WAERS" Type="varchar" MaxLength="30" />
+          <Property Name="BRTWR" Type="varchar" MaxLength="20" />
+          <Property Name="DATAB" Type="datetime" />
+          <Property Name="DATBI" Type="datetime" />
+          <Property Name="CreateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MATNR" Type="varchar" MaxLength="30" />
+          <Property Name="MAKTX" Type="nvarchar" MaxLength="400" />
+          <Property Name="ZZCT2" Type="nvarchar" MaxLength="400" />
+          <Property Name="LIFNR" Type="varchar" MaxLength="20" />
+          <Property Name="ZZMATU" Type="nvarchar" MaxLength="400" />
+          <Property Name="ZFVOLUME" Type="varchar" MaxLength="30" />
+          <Property Name="ZZPAGE" Type="nvarchar" MaxLength="10" />
+          <Property Name="WGBEZ" Type="nvarchar" MaxLength="50" />
+          <Property Name="ZFPRESERVE_D" Type="nvarchar" MaxLength="50" />
+          <Property Name="ZZSE" Type="nvarchar" MaxLength="50" />
+          <Property Name="NETPR" Type="varchar" MaxLength="20" />
+          <Property Name="WAERS" Type="nchar" MaxLength="10" />
+          <Property Name="DMBTR" Type="varchar" MaxLength="20" />
+          <Property Name="ERDAT" Type="datetime" />
+          <Property Name="UDATE" Type="datetime" />
+          <Property Name="CreateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="StockID" />
+          </Key>
+          <Property Name="StockID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MATNR" Type="varchar" MaxLength="20" />
+          <Property Name="MENGE" Type="varchar" MaxLength="10" />
+          <Property Name="WERKS" Type="varchar" MaxLength="20" />
+          <Property Name="CreateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="VendorID" />
+          </Key>
+          <Property Name="VendorID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LIFNR" Type="nvarchar" MaxLength="50" />
+          <Property Name="NAME1" Type="nvarchar" MaxLength="50" />
+          <Property Name="ZZAUTH" Type="nvarchar" MaxLength="50" />
+          <Property Name="LAND1" Type="nvarchar" MaxLength="50" />
+          <Property Name="SORTL" Type="nvarchar" MaxLength="50" />
+          <Property Name="ERDAT" Type="datetime" />
+          <Property Name="UDATE" Type="datetime" />
+          <Property Name="CreateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Warehouse">
+          <Key>
+            <PropertyRef Name="WarehouseID" />
+          </Key>
+          <Property Name="WarehouseID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WERKS" Type="nvarchar" MaxLength="50" />
+          <Property Name="NAME1" Type="nvarchar" MaxLength="50" />
+          <Property Name="EKORG" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="CubeRFCModelStoreContainer">
+          <EntitySet Name="Price" EntityType="Self.Price" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stock" EntityType="Self.Stock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Warehouse" EntityType="Self.Warehouse" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CubeRFCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Price">
+          <Key>
+            <PropertyRef Name="PriceID" />
+          </Key>
+          <Property Name="PriceID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MATNR" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="WAERS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BRTWR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DATAB" Type="DateTime" Precision="3" />
+          <Property Name="DATBI" Type="DateTime" Precision="3" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MATNR" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="MAKTX" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="ZZCT2" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="LIFNR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ZZMATU" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="ZFVOLUME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ZZPAGE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="WGBEZ" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ZFPRESERVE_D" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ZZSE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NETPR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="WAERS" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="DMBTR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ERDAT" Type="DateTime" Precision="3" />
+          <Property Name="UDATE" Type="DateTime" Precision="3" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="StockID" />
+          </Key>
+          <Property Name="StockID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MATNR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MENGE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="WERKS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="VendorID" />
+          </Key>
+          <Property Name="VendorID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LIFNR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NAME1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ZZAUTH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LAND1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SORTL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ERDAT" Type="DateTime" Precision="3" />
+          <Property Name="UDATE" Type="DateTime" Precision="3" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Warehouse">
+          <Key>
+            <PropertyRef Name="WarehouseID" />
+          </Key>
+          <Property Name="WarehouseID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WERKS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NAME1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EKORG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="CubeRFCEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Price" EntityType="Self.Price" />
+          <EntitySet Name="Product" EntityType="Self.Product" />
+          <EntitySet Name="Stock" EntityType="Self.Stock" />
+          <EntitySet Name="Vendor" EntityType="Self.Vendor" />
+          <EntitySet Name="Warehouse" EntityType="Self.Warehouse" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CubeRFCModelStoreContainer" CdmEntityContainer="CubeRFCEntities">
+          <EntitySetMapping Name="Price">
+            <EntityTypeMapping TypeName="CubeRFCModel.Price">
+              <MappingFragment StoreEntitySet="Price">
+                <ScalarProperty Name="PriceID" ColumnName="PriceID" />
+                <ScalarProperty Name="MATNR" ColumnName="MATNR" />
+                <ScalarProperty Name="WAERS" ColumnName="WAERS" />
+                <ScalarProperty Name="BRTWR" ColumnName="BRTWR" />
+                <ScalarProperty Name="DATAB" ColumnName="DATAB" />
+                <ScalarProperty Name="DATBI" ColumnName="DATBI" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="CubeRFCModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="MATNR" ColumnName="MATNR" />
+                <ScalarProperty Name="MAKTX" ColumnName="MAKTX" />
+                <ScalarProperty Name="ZZCT2" ColumnName="ZZCT2" />
+                <ScalarProperty Name="LIFNR" ColumnName="LIFNR" />
+                <ScalarProperty Name="ZZMATU" ColumnName="ZZMATU" />
+                <ScalarProperty Name="ZFVOLUME" ColumnName="ZFVOLUME" />
+                <ScalarProperty Name="ZZPAGE" ColumnName="ZZPAGE" />
+                <ScalarProperty Name="WGBEZ" ColumnName="WGBEZ" />
+                <ScalarProperty Name="ZFPRESERVE_D" ColumnName="ZFPRESERVE_D" />
+                <ScalarProperty Name="ZZSE" ColumnName="ZZSE" />
+                <ScalarProperty Name="NETPR" ColumnName="NETPR" />
+                <ScalarProperty Name="WAERS" ColumnName="WAERS" />
+                <ScalarProperty Name="DMBTR" ColumnName="DMBTR" />
+                <ScalarProperty Name="ERDAT" ColumnName="ERDAT" />
+                <ScalarProperty Name="UDATE" ColumnName="UDATE" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stock">
+            <EntityTypeMapping TypeName="CubeRFCModel.Stock">
+              <MappingFragment StoreEntitySet="Stock">
+                <ScalarProperty Name="StockID" ColumnName="StockID" />
+                <ScalarProperty Name="MATNR" ColumnName="MATNR" />
+                <ScalarProperty Name="MENGE" ColumnName="MENGE" />
+                <ScalarProperty Name="WERKS" ColumnName="WERKS" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendor">
+            <EntityTypeMapping TypeName="CubeRFCModel.Vendor">
+              <MappingFragment StoreEntitySet="Vendor">
+                <ScalarProperty Name="VendorID" ColumnName="VendorID" />
+                <ScalarProperty Name="LIFNR" ColumnName="LIFNR" />
+                <ScalarProperty Name="NAME1" ColumnName="NAME1" />
+                <ScalarProperty Name="ZZAUTH" ColumnName="ZZAUTH" />
+                <ScalarProperty Name="LAND1" ColumnName="LAND1" />
+                <ScalarProperty Name="SORTL" ColumnName="SORTL" />
+                <ScalarProperty Name="ERDAT" ColumnName="ERDAT" />
+                <ScalarProperty Name="UDATE" ColumnName="UDATE" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Warehouse">
+            <EntityTypeMapping TypeName="CubeRFCModel.Warehouse">
+              <MappingFragment StoreEntitySet="Warehouse">
+                <ScalarProperty Name="WarehouseID" ColumnName="WarehouseID" />
+                <ScalarProperty Name="WERKS" ColumnName="WERKS" />
+                <ScalarProperty Name="NAME1" ColumnName="NAME1" />
+                <ScalarProperty Name="EKORG" ColumnName="EKORG" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
