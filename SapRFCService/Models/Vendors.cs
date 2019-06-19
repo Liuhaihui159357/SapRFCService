@@ -42,8 +42,11 @@ namespace SapRFCService.Models
 
                 using (var db = new CubeRFCEntities())
                 {
+                    var VendorsList = db.Vendor.AsEnumerable().Select(x => x.BatchNo).ToList();
+                    int BatchNo = VendorsList.Count==0?1:VendorsList.Max() + 1;
+
                     foreach (var item in Z_MM_QUBE_LIFNR_List)
-                    {
+                    {                      
                         db.Vendor.Add(new Vendor()
                         {
                             LIFNR = item.LIFNR,
@@ -53,7 +56,8 @@ namespace SapRFCService.Models
                             SORTL = item.SORTL,
                             ERDAT = DateTime.Parse(item.ERDAT),
                             UDATE = item.UDATE == "0000-00-00" ? DateTime.Parse("1900-01-01") : DateTime.Parse(item.UDATE),
-                            CreateDate = DateTime.Now
+                            CreateDate = DateTime.Now,
+                            BatchNo=BatchNo
                         });
                     }
 
@@ -65,6 +69,10 @@ namespace SapRFCService.Models
             catch (Exception e)
             {
                 result = e.ToString();
+                //發送通知信給開發者
+                string strMailTitle = "系統發生錯誤";
+                string str_mailbody = e.ToString();
+                Mail.Send(strMailTitle, result);
             }
 
             return result;

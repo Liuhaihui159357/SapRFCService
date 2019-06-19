@@ -16,6 +16,7 @@
           <Property Name="DATAB" Type="datetime" />
           <Property Name="DATBI" Type="datetime" />
           <Property Name="CreateDate" Type="datetime" />
+          <Property Name="BatchNo" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -27,7 +28,7 @@
           <Property Name="ZZCT2" Type="nvarchar" MaxLength="400" />
           <Property Name="LIFNR" Type="varchar" MaxLength="20" />
           <Property Name="ZZMATU" Type="nvarchar" MaxLength="400" />
-          <Property Name="ZFVOLUME" Type="varchar" MaxLength="30" />
+          <Property Name="ZFVOLUME" Type="nvarchar" MaxLength="50" />
           <Property Name="ZZPAGE" Type="nvarchar" MaxLength="10" />
           <Property Name="WGBEZ" Type="nvarchar" MaxLength="50" />
           <Property Name="ZFPRESERVE_D" Type="nvarchar" MaxLength="50" />
@@ -38,6 +39,7 @@
           <Property Name="ERDAT" Type="datetime" />
           <Property Name="UDATE" Type="datetime" />
           <Property Name="CreateDate" Type="datetime" />
+          <Property Name="BatchNo" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Stock">
           <Key>
@@ -48,6 +50,7 @@
           <Property Name="MENGE" Type="varchar" MaxLength="10" />
           <Property Name="WERKS" Type="varchar" MaxLength="20" />
           <Property Name="CreateDate" Type="datetime" />
+          <Property Name="BatchNo" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Vendor">
           <Key>
@@ -62,6 +65,7 @@
           <Property Name="ERDAT" Type="datetime" />
           <Property Name="UDATE" Type="datetime" />
           <Property Name="CreateDate" Type="datetime" />
+          <Property Name="BatchNo" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Warehouse">
           <Key>
@@ -72,6 +76,7 @@
           <Property Name="NAME1" Type="nvarchar" MaxLength="50" />
           <Property Name="EKORG" Type="nvarchar" MaxLength="50" />
           <Property Name="CreateDate" Type="datetime" />
+          <Property Name="BatchNo" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="CubeRFCModelStoreContainer">
           <EntitySet Name="Price" EntityType="Self.Price" Schema="dbo" store:Type="Tables" />
@@ -95,6 +100,7 @@
           <Property Name="DATAB" Type="DateTime" Precision="3" />
           <Property Name="DATBI" Type="DateTime" Precision="3" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="BatchNo" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -106,7 +112,7 @@
           <Property Name="ZZCT2" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
           <Property Name="LIFNR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="ZZMATU" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
-          <Property Name="ZFVOLUME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ZFVOLUME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ZZPAGE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="WGBEZ" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ZFPRESERVE_D" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -117,6 +123,7 @@
           <Property Name="ERDAT" Type="DateTime" Precision="3" />
           <Property Name="UDATE" Type="DateTime" Precision="3" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="BatchNo" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Stock">
           <Key>
@@ -127,6 +134,7 @@
           <Property Name="MENGE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="WERKS" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="BatchNo" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Vendor">
           <Key>
@@ -141,6 +149,7 @@
           <Property Name="ERDAT" Type="DateTime" Precision="3" />
           <Property Name="UDATE" Type="DateTime" Precision="3" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="BatchNo" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Warehouse">
           <Key>
@@ -151,6 +160,7 @@
           <Property Name="NAME1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="EKORG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="BatchNo" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityContainer Name="CubeRFCEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Price" EntityType="Self.Price" />
@@ -168,6 +178,7 @@
           <EntitySetMapping Name="Price">
             <EntityTypeMapping TypeName="CubeRFCModel.Price">
               <MappingFragment StoreEntitySet="Price">
+                <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
                 <ScalarProperty Name="PriceID" ColumnName="PriceID" />
                 <ScalarProperty Name="MATNR" ColumnName="MATNR" />
                 <ScalarProperty Name="WAERS" ColumnName="WAERS" />
@@ -181,6 +192,7 @@
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="CubeRFCModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="MATNR" ColumnName="MATNR" />
                 <ScalarProperty Name="MAKTX" ColumnName="MAKTX" />
@@ -204,6 +216,7 @@
           <EntitySetMapping Name="Stock">
             <EntityTypeMapping TypeName="CubeRFCModel.Stock">
               <MappingFragment StoreEntitySet="Stock">
+                <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
                 <ScalarProperty Name="StockID" ColumnName="StockID" />
                 <ScalarProperty Name="MATNR" ColumnName="MATNR" />
                 <ScalarProperty Name="MENGE" ColumnName="MENGE" />
@@ -215,6 +228,7 @@
           <EntitySetMapping Name="Vendor">
             <EntityTypeMapping TypeName="CubeRFCModel.Vendor">
               <MappingFragment StoreEntitySet="Vendor">
+                <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
                 <ScalarProperty Name="VendorID" ColumnName="VendorID" />
                 <ScalarProperty Name="LIFNR" ColumnName="LIFNR" />
                 <ScalarProperty Name="NAME1" ColumnName="NAME1" />
@@ -230,6 +244,7 @@
           <EntitySetMapping Name="Warehouse">
             <EntityTypeMapping TypeName="CubeRFCModel.Warehouse">
               <MappingFragment StoreEntitySet="Warehouse">
+                <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
                 <ScalarProperty Name="WarehouseID" ColumnName="WarehouseID" />
                 <ScalarProperty Name="WERKS" ColumnName="WERKS" />
                 <ScalarProperty Name="NAME1" ColumnName="NAME1" />

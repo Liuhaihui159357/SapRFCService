@@ -19,5 +19,6 @@ namespace SapRFCService.Model
         public string NAME1 { get; set; }
         public string EKORG { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
+        public int BatchNo { get; set; }
     }
 }

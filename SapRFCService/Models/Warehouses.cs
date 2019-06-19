@@ -35,6 +35,9 @@ namespace SapRFCService.Models
 
                 using (var db = new CubeRFCEntities())
                 {
+                    var WarehouseList = db.Warehouse.AsEnumerable().Select(x => x.BatchNo).ToList();
+                    int BatchNo = WarehouseList.Count==0?1:WarehouseList.Max() + 1;
+
                     foreach (var item in Z_MM_QUBE_WERKS_List)
                     {
                         db.Warehouse.Add(new Warehouse()
@@ -42,7 +45,8 @@ namespace SapRFCService.Models
                             WERKS = item.WERKS,
                             NAME1 = item.NAME1,
                             EKORG = item.EKORG,
-                            CreateDate = DateTime.Now
+                            CreateDate = DateTime.Now,
+                            BatchNo=BatchNo
                         });
                     }
 
@@ -54,6 +58,10 @@ namespace SapRFCService.Models
             } catch(Exception e)
             {
                 result = e.ToString();
+                //發送通知信給開發者
+                string strMailTitle = "系統發生錯誤";
+                string str_mailbody = e.ToString();
+                Mail.Send(strMailTitle, result);
             }
 
             return result;

@@ -31,5 +31,6 @@ namespace SapRFCService.Model
         public Nullable<System.DateTime> ERDAT { get; set; }
         public Nullable<System.DateTime> UDATE { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
+        public int BatchNo { get; set; }
     }
 }

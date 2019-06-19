@@ -19,5 +19,6 @@ namespace SapRFCService.Model
         public string MENGE { get; set; }
         public string WERKS { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
+        public int BatchNo { get; set; }
     }
 }

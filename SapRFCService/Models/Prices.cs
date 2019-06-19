@@ -39,10 +39,13 @@ namespace SapRFCService.Models
 
                 using (var db = new CubeRFCEntities())
                 {
+                    var PricesList = db.Price.AsEnumerable().Select(x => x.BatchNo).ToList();
+                    int BatchNo = PricesList.Count==0?1:PricesList.Max() + 1;
+
                     StringBuilder SQLcommand = new StringBuilder();
                     foreach (var item in Z_MM_QUBE_VKP0_List)
                     {
-                        string InsertCommand = string.Format("Insert Into Price (MATNR,WAERS,BRTWR,DATAB,DATBI,CreateDate) values('{0}','{1}','{2}','{3}','{4}',GetDate()) ;", item.MATNR, item.WAERS, item.BRTWR, item.DATAB, item.DATBI);
+                        string InsertCommand = string.Format("Insert Into Price (MATNR,WAERS,BRTWR,DATAB,DATBI,CreateDate,BatchNo) values('{0}','{1}','{2}','{3}','{4}',GetDate(),{5}) ;", item.MATNR, item.WAERS, item.BRTWR, item.DATAB, item.DATBI, BatchNo);
                         SQLcommand.AppendLine(InsertCommand);
                     }
                     db.Database.ExecuteSqlCommand(SQLcommand.ToString());
@@ -53,6 +56,10 @@ namespace SapRFCService.Models
             } catch(Exception e)
             {
                 result = e.ToString();
+                //發送通知信給開發者
+                string strMailTitle = "系統發生錯誤";
+                string str_mailbody = e.ToString();
+                Mail.Send(strMailTitle, result);
             }
 
             return result;

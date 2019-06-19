@@ -53,6 +53,11 @@ namespace SapRFCService.Models
             } catch(Exception e)
             {
                 result = e.ToString();
+                //發送通知信給開發者
+                string strMailTitle = "系統發生錯誤";
+                string str_mailbody = e.ToString();
+                Mail.Send(strMailTitle, result);
+
             }
 
             return result;
@@ -111,6 +116,10 @@ namespace SapRFCService.Models
         {
             using (var db = new CubeRFCEntities())
             {
+
+                var ProductList = db.Product.AsEnumerable().Select(x => x.BatchNo).ToList();
+                int BatchNo = ProductList.Count==0?1:ProductList.Max() + 1;
+
                 foreach (var item in Z_MM_QUBE_MATNR_List)
                 {
                     if (item.UDATE == "0000-00-00")
@@ -119,10 +128,10 @@ namespace SapRFCService.Models
                     }
 
                     string InsertCommand = "Insert Into Product " +
-                        "(MATNR,MAKTX,ZZCT2,LIFNR,ZZMATU,ZFVOLUME,ZZPAGE,WGBEZ,ZFPRESERVE_D,ZZSE,NETPR,WAERS,DMBTR,ERDAT,UDATE,CreateDate) " +
-                        "values(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10,@p11,@p12,@p13,@p14,GetDate()) ;";
+                        "(MATNR,MAKTX,ZZCT2,LIFNR,ZZMATU,ZFVOLUME,ZZPAGE,WGBEZ,ZFPRESERVE_D,ZZSE,NETPR,WAERS,DMBTR,ERDAT,UDATE,CreateDate,BatchNo) " +
+                        "values(@p0,@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10,@p11,@p12,@p13,@p14,GetDate(),@p15) ;";
 
-                    db.Database.ExecuteSqlCommand(InsertCommand.ToString(), item.MATNR, item.MAKTX, item.ZZCT2, item.LIFNR, item.ZZMATU, item.ZFVOLUME, item.ZZPAGE, item.WGBEZ, item.ZFPRESERVE_D, item.ZZSE, item.NETPR, item.WAERS, item.DMBTR, item.ERDAT, item.UDATE);
+                    db.Database.ExecuteSqlCommand(InsertCommand.ToString(), item.MATNR, item.MAKTX, item.ZZCT2, item.LIFNR, item.ZZMATU, item.ZFVOLUME, item.ZZPAGE, item.WGBEZ, item.ZFPRESERVE_D, item.ZZSE, item.NETPR, item.WAERS, item.DMBTR, item.ERDAT, item.UDATE, BatchNo);
                 }
 
                 #region EntityFrameWork的寫法

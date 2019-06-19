@@ -21,5 +21,6 @@ namespace SapRFCService.Model
         public Nullable<System.DateTime> DATAB { get; set; }
         public Nullable<System.DateTime> DATBI { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
+        public int BatchNo { get; set; }
     }
 }
