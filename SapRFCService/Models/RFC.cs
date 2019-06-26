@@ -13,10 +13,10 @@ namespace SapRFCService.Models
         {
             RfcConfigParameters parms = new RfcConfigParameters();
             parms.Add(RfcConfigParameters.Name, "ESQ");
-            parms.Add(RfcConfigParameters.AppServerHost, "192.168.82.26");
-            parms.Add(RfcConfigParameters.SystemNumber, "11");
-            parms.Add(RfcConfigParameters.User, "FLOW");
-            parms.Add(RfcConfigParameters.Password, "efh@opk3");
+            parms.Add(RfcConfigParameters.AppServerHost, "192.168.82.8");
+            parms.Add(RfcConfigParameters.SystemNumber, "00");
+            parms.Add(RfcConfigParameters.User, "WDSRFC");
+            parms.Add(RfcConfigParameters.Password, "sJ@hsyg8");
             parms.Add(RfcConfigParameters.Client, "800");
             parms.Add(RfcConfigParameters.Language, "zf");
             parms.Add(RfcConfigParameters.PoolSize, "5");
